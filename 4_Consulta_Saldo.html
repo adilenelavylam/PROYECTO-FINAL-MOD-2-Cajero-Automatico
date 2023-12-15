@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" type="imagel">
+    <title>Consultar Saldo</title>
+    <link rel="stylesheet" href="/4_Consultar_Saldo.css">
+</head>
+<body>
+    <main>
+        <div id="LogoUsuario">
+            <div id="Logocit">
+                <h2>citibanamex</h2>
+                
+            </div>
+    
+            <div id="Usuarioimglog">
+                <img id="logomin" src="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" alt="logo_citibanamex">
+            </div>
+        </div>
+
+        <div id="Contenido">
+            <div id="welcom">XXXXXX</div>
+            <div id="Conttext">El detalle de su saldo es:</div>
+        </div>
+        <div id="Saldodisp">
+            <div id="Cta">Cuenta de cheques:</div>
+            <div id="Sld">Su saldo actual: </div>
+        </div>
+
+        <div id="bot">
+            <button type="button" class="botonopciones">Imprimir</button>
+            <button type="button" class="botonopciones" id="noimprimir">No Imprimir</button>
+        </div>
+
+    </main>
+
+    <footer>
+        <div id="footus">
+            <button type="button" class="botonsalir" id="botonsalir4">Salir</button>
+
+        </div>
+    </footer>
+    <script src="/Funcion_Cajero.js"></script>
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    var nombreUsuario = urlParams.get("usuario");
+
+    var welcomDiv = document.getElementById("welcom");
+    if (welcomDiv) {
+        welcomDiv.textContent = "Bienvenido " + nombreUsuario;
+    }
+
+    var cuentaUsuario = obtenerCuentaUsuario(nombreUsuario);
+    var cuentaDiv = document.getElementById("Cta");
+    if (cuentaDiv) {
+        cuentaDiv.textContent = "Cuenta de cheques: " + cuentaUsuario.numeroCuenta;
+    }
+
+    var saldoCuenta = cuentaUsuario.saldo;
+    var saldoDiv = document.getElementById("Sld");
+    if (saldoDiv) {
+        saldoDiv.textContent = "Su saldo actual es: $" + saldoCuenta;
+    }
+});
+
+function obtenerCuentaUsuario(nombreUsuario) {
+    for (var i = 0; i < cuentas.length; i++) {
+        if (cuentas[i].nombre === nombreUsuario) {
+            return cuentas[i];
+        }
+    }
+    return null;
+}
+
+
+    </script>
+
+    
+</body>
+</html>

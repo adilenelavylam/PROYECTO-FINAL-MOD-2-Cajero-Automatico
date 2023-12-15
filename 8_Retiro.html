@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" type="imagel">
+    <title>Retiro</title>
+    <link rel="stylesheet" href="/8_Retiro.css">
+</head>
+<body>
+    <main>
+        <div id="LogoUsuario">
+            <div id="Logocit">
+                <h2>citibanamex</h2>
+                
+            </div>
+    
+            <div id="Usuarioimglog">
+                <img id="logomin" src="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" alt="logo_citibanamex">
+            </div>
+        </div>
+
+        <div id="contenidodep">
+            <div id="x1">xxx</div>
+            <div id="ingcont">Ingrese el monto a retirar</div>
+            <form id="fuser">
+                <label>
+                    $
+                    <input id="User1" type="number"> 
+                    
+                </label>
+            </form>
+
+            <div id="bot">
+                <button type="button" class="botonopciones" onclick="limpiarFormulario()">Corregir</button>
+                <button type="button" class="botonopciones" id="botonContinuarRetiro" onclick="continuarRetiro()">Continuar</button>
+            </div>
+            
+        </div>
+
+    </main>
+
+    <footer>
+        <div id="footus">
+            <button type="button" class="botonsalir" id="botonsalir81" onclick="redirigir()">Salir</button>
+
+        </div>
+    </footer>
+
+    <script src="/Funcion_Cajero.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var nombreUsuario = urlParams.get("usuario");
+            var x1Div = document.getElementById("x1");
+    
+            if (x1Div) {
+                x1Div.textContent = "Bienvenido " + (nombreUsuario || "xxx");
+            }
+    
+            var formulario = document.getElementById("fuser");    
+        });
+    
+        function limpiarFormulario() {
+            document.getElementById("User1").value = "";
+        }
+
+        function continuarRetiro() {
+            var montoRetiro = document.getElementById("User1").value;
+
+            if (montoRetiro === "") {
+                alert("Favor de ingresar la cantidad a retirar");
+            } else {
+                console.log("Continuar con el retiro:", montoRetiro);
+            }
+        }
+
+        function continuarRetiro() {
+    var montoRetiro = document.getElementById("User1").value;
+
+    if (montoRetiro === "") {
+        alert("Favor de ingresar la cantidad a retirar");
+    } else {
+        window.location.href = "/9_Confirma_Retiro.html?montoRetiro=" + encodeURIComponent(montoRetiro);
+    }
+}
+    
+        
+    </script>
+
+    
+</body>
+</html>

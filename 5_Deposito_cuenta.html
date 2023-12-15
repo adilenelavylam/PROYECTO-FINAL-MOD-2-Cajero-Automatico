@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" type="imagel">
+    <title>Depósito Cuenta</title>
+    <link rel="stylesheet" href="/5_Deposito_cuenta.css">
+</head>
+<body>
+    <main>
+        <div id="LogoUsuario">
+            <div id="Logocit">
+                <h2>citibanamex</h2>
+                
+            </div>
+    
+            <div id="Usuarioimglog">
+                <img id="logomin" src="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" alt="logo_citibanamex">
+            </div>
+        </div>
+
+        <div id="contenidodep">
+            <div id="ingcont">Ingrese el número de cuenta</div>
+            <form id="fuser">
+                <label>
+                    <input id="User" type="number">
+                </label>
+            </form>
+
+            <div id="bot">
+                <button type="button" class="botonopciones">Corregir</button>
+                <button id="continuarBtn" type="button" class="botonopciones">Continuar</button>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer>
+        <div id="footus">
+            <button type="button" class="botonsalir">Salir</button>
+
+        </div>
+    </footer>
+
+    <script src="/Funcion_Cajero.js"></script>
+
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var corregirBtn = document.querySelector('.botonopciones');
+
+        corregirBtn.addEventListener('click', function () {
+            var userInput = document.getElementById('User');
+            userInput.value = '';
+        });
+
+        var salirBtn = document.querySelector('.botonsalir');
+
+        salirBtn.addEventListener('click', function () {
+            window.location.href = '10_Gracias.html';
+        });
+
+        var continuarBtn = document.querySelectorAll('.botonopciones')[1];
+
+        continuarBtn.addEventListener('click', function () {
+            var numeroCuentaInput = document.getElementById('User').value.trim();
+
+            if (numeroCuentaInput === '') {
+                alert('Por favor, ingrese un número de cuenta antes de continuar.');
+                return;
+            }
+
+            numeroCuentaInput = parseInt(numeroCuentaInput);
+
+            var cuentaExistente = cuentas.some(function (cuenta) {
+                return cuenta.numeroCuenta === numeroCuentaInput;
+            });
+
+            if (cuentaExistente) {
+                window.location.href = '/6_Cantidad_a_Depositar.html';
+            } else {
+                alert('Cuenta inexistente, favor de corroborar');
+            }
+        });
+    });
+</script>
+    
+
+    
+</body>
+</html>

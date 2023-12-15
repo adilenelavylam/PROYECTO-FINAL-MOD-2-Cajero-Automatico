@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" type="imagel">
+    <title>Confirma Retito</title>
+    <link rel="stylesheet" href="/9_Confirma_Retiro.css">
+</head>
+<body>
+    <main>
+        <div id="LogoUsuario">
+            <div id="Logocit">
+                <h2>citibanamex</h2>
+                
+            </div>
+    
+            <div id="Usuarioimglog">
+                <img id="logomin" src="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" alt="logo_citibanamex">
+            </div>
+        </div>
+
+        <div id="contenido">
+            <div id="context">Por favor confirme su retiro, <span id="nombreUsuario"></span></div>
+            <div class="revdat cuenta">Cuenta:</div>
+            <div class="revdat cantidad">Cantidad a retirar:</div>
+        </div>
+
+
+        <div id="contenido2">
+            <div>¿Desea continuar con el retiro?</div>
+            <div id="bot">
+                <button type="button" class="botonopciones">Corregir</button>
+                <button type="button" class="botonopciones">Continuar</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div id="footus">
+            <button type="button" class="botonsalir">Salir</button>
+
+        </div>
+    </footer>
+
+    <script src="/Funcion_Cajero.js"></script>
+
+    <script>
+        
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    var urlParams = new URLSearchParams(window.location.search);
+
+    var cuentaDiv = document.querySelector(".revdat.cuenta");
+    var cantidadDiv = document.querySelector(".revdat.cantidad");
+
+    var montoRetiro = urlParams.get("montoRetiro");
+    var nombreUsuario = urlParams.get("usuario");
+
+    console.log("Nombre de usuario:", nombreUsuario);
+    console.log("Array de cuentas:", cuentas);
+
+    var cuentaUsuario = obtenernumeroCuenta(nombreUsuario);
+
+    if (cuentaDiv) {
+        cuentaDiv.textContent = "Cuenta: " + cuentaUsuario;
+    }
+
+    if (cantidadDiv) {
+        cantidadDiv.textContent = "Cantidad a retirar: " + (montoRetiro || "No especificado");
+    }
+});
+
+function obtenernumeroCuenta(nombreUsuario) {
+    for (var i = 0; i < cuentas.length; i++) {
+        if (cuentas[i].nombre === nombreUsuario) {
+            return cuentas[i].numeroCuenta; 
+        }
+    }
+    return null;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const nombreUsuario = urlParams.get("usuario");
+    const numeroCuenta = urlParams.get("cuenta");
+
+    document.getElementById("nombreUsuario").textContent = nombreUsuario;
+
+    document.querySelector(".revdat.cuenta").textContent = "Cuenta: " + numeroCuenta;
+});
+
+
+
+
+    </script>
+    
+</body>
+</html>

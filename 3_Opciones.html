@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" type="imagel">
+    <title>Opciones</title>
+    <link rel="stylesheet" href="/3_Opciones.css">
+</head>
+<body>
+    <main>
+        <div id="LogoUsuario">
+            <div id="Logocit">
+                <h2>citibanamex</h2>
+                
+            </div>
+    
+            <div id="Usuarioimglog">
+                <img id="logomin" src="./Imagenes/Logo_de_Citibanamex_(sin_texto).svg.png" alt="logo_citibanamex">
+            </div>
+        </div>
+
+        <div id="welusu">
+            <div id="welcom"> </div>
+            <div id="welcom1">xxx</div>
+
+        </div>
+        
+
+        <div id="Contenido">
+            <div id="Conttext">Seleccione la opción deseada</div>
+            <div id="bot">
+                <button type="button" class="botonopciones" id="botonretiro3" >Retiro de Efectivo</button>
+                <button type="button" class="botonopciones" id="botonconsulta3" >Consultar Saldo</button>
+            </div>
+        </div>
+
+    
+       
+
+
+
+    </main>
+    <footer>
+        <div id="footus">
+            <button type="button" class="botonsalir" id="botonsalir3">Salir</button>
+
+        </div>
+    </footer>
+
+    <script src="/Funcion_Cajero.js"></script>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var nombreUsuario = urlParams.get("usuario");
+
+            var welcomDiv = document.getElementById("welcom1");
+            if (welcomDiv) {
+                welcomDiv.textContent = "Bienvenido " + nombreUsuario;
+            }
+
+            var botonConsulta = document.getElementById("botonconsulta3");
+            botonConsulta.addEventListener("click", function () {
+                window.location.href = "/4_Consulta_Saldo.html?usuario=" + encodeURIComponent(nombreUsuario);
+            });
+
+            var botonRetiro = document.getElementById("botonretiro3");
+            botonRetiro.addEventListener("click", function () {
+                window.location.href = "/8_Retiro.html?usuario=" + encodeURIComponent(nombreUsuario);
+            });
+
+            var botonSalir = document.getElementById("botonsalir3");
+            botonSalir.addEventListener("click", function () {
+                window.location.href = "/10_Gracias.html";
+            });
+        });
+    </script>
+
+    
+    
+
+
+
+
+    
+</body>
+</html>
